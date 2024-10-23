@@ -1,0 +1,6 @@
+When developing a Python application with a team, in the CI setup, linting could be done with tools like pylint, flake8 or mypy. Testing could be done using libraries such as unittest or pytest. Robot framework can also be useful for higher level tests, such as integration tests or for testing different workflows. When working with an interpreted language like Python, build tools are not needed as it does not require compiling.
+
+Some alternatives for self-hosted CI setups such as Jenkins are GitLab CI, TeamCity and GoCD. Both TeamCity and GitLab CI offer cloud-hosted services as well and they can be used as alternatives to GitHub Actions. Many of these platforms offer self-hosted as well as cloud-hosted solutions.
+
+Based on the limited information provided about the project, I would go with cloud-based environment like GitHub Actions because the team is relatively small. However if the project requires specialized hardware, a flexible self-hosted environment would be better as you can control and customize the resources more freely. The scale of the project also matters, if we know beforehand that the project is going to require more and more resources over time, it might be a good idea to choose a cloud-hosted solution as it will be easier to scale.
+
