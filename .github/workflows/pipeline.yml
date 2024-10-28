@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+    pull_request:
+      branches: [main]
+      types: [opened, synchronize]
 
 jobs:
   simple_deployment_pipeline:
@@ -26,6 +29,7 @@ jobs:
       - name: Run Playwright tests
         run: npx playwright test
       - name: Render Deploy Action
+        if: ${{ github.event_name == 'push' }}
         uses: johnbeynon/render-deploy-action@v0.0.8
         with:
           service-id: ${{ secrets.MY_RENDER_SERVICE_ID }}
