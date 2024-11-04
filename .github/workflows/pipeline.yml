@@ -35,16 +35,16 @@ jobs:
           service-id: ${{ secrets.MY_RENDER_SERVICE_ID }}
           api-key: ${{ secrets.MY_RENDER_API_KEY }}
       -name: Discord Deployment Success
-        if: success()
         uses: stegzilla/discord-notify@v2
+        if: success()
         with:
           webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
           title: Deployment Succeeded
           message: "${{ github.sha }} succeeded"
           username: bot
       -name: Discord Deployment Failed
-        if: failure()
         uses: stegzilla/discord-notify@v2
+        if: failure()
         with:
           webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
           title: Deployment Failed
