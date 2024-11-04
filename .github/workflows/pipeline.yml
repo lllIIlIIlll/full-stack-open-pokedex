@@ -34,9 +34,9 @@ jobs:
         with:
           service-id: ${{ secrets.MY_RENDER_SERVICE_ID }}
           api-key: ${{ secrets.MY_RENDER_API_KEY }}
-      - name: Discord Build Success
+      - name: Discord Deployment Success
         uses: stegzilla/discord-notify@v2
-        if: success()
+        if: ${{ success() && (github.event_name == 'push' && !contains(toJson(github.event.commits.*.message), '#skip'))}}
         with:
           webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
           title: Deployment Succeeded
