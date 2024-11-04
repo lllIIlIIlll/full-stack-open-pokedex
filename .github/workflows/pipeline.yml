@@ -39,11 +39,11 @@ jobs:
         if: success()
         with:
           webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
-          title: Build Succeeded
-          message: 'Commit https://github.com/${{ github.repository }}/commit/${{ github.sha }} succeeded'
+          title: Deployment Succeeded
+          message: 'https://full-stack-open-pokedex-8yjd.onrender.com'
           username: bot
           colour: '#00ff00'
-      - name: Discord Build Failed
+      - name: Discord Build Fail
         uses: stegzilla/discord-notify@v2
         if: failure()
         with:
