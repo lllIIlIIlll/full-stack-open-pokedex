@@ -34,22 +34,24 @@ jobs:
         with:
           service-id: ${{ secrets.MY_RENDER_SERVICE_ID }}
           api-key: ${{ secrets.MY_RENDER_API_KEY }}
-      - name: Discord Deployment Success
+      - name: Discord Build Success
         uses: stegzilla/discord-notify@v2
         if: success()
         with:
           webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
-          title: Deployment Succeeded
-          message: '${{ github.sha }} succeeded'
+          title: Build Succeeded
+          message: 'Commit https://github.com/${{ github.repository }}/commit/${{ github.sha }} succeeded'
           username: bot
-      - name: Discord Deployment Failed
+          colour: '#00ff00'
+      - name: Discord Build Failed
         uses: stegzilla/discord-notify@v2
         if: failure()
         with:
           webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
-          title: Deployment Failed
-          message: '${{ github.sha }} failed'
+          title: Build Failed
+          message: 'Commit: https://github.com/${{ github.repository }}/commit/${{ github.sha }} failed'
           username: bot
+          colour: '#ff0000'
   tag_release:
     needs: [simple_deployment_pipeline]
     runs-on: ubuntu-20.04
