@@ -34,23 +34,22 @@ jobs:
         with:
           service-id: ${{ secrets.MY_RENDER_SERVICE_ID }}
           api-key: ${{ secrets.MY_RENDER_API_KEY }}
-      - name: Discord Webhook Success
-        uses: rjstone/discord-webhook-notify@v1
+      -name: Discord Deployment Success
         if: success()
+        uses: stegzilla/discord-notify@v2
         with:
-          severity: info
+          webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
+          title: Deployment Succeeded
+          message: "${{ github.sha }} succeeded"
           username: bot
-          details: Deployment Succeeded
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-      - name: Discord Webhook Failure
-        uses: rjstone/discord-webhook-notify@v1
+      -name: Discord Deployment Failed
         if: failure()
+        uses: stegzilla/discord-notify@v2
         with:
-          severity: error
+          webhook_url: ${{ secrets.DISCORD_WEBHOOK }}
+          title: Deployment Failed
+          message: "${{ github.sha }} failed"
           username: bot
-          details: Deployment Failed
-          webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-
   tag_release:
     needs: [simple_deployment_pipeline]
     runs-on: ubuntu-20.04
