@@ -35,7 +35,7 @@ jobs:
           service-id: ${{ secrets.MY_RENDER_SERVICE_ID }}
           api-key: ${{ secrets.MY_RENDER_API_KEY }}
       - name: Discord Webhook Success
-        uses: rjstone/discord-webhook-notify@v1.0.4
+        uses: rjstone/discord-webhook-notify@v1
         if: success()
         with:
           severity: info
@@ -43,7 +43,7 @@ jobs:
           details: Deployment Succeeded
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
       - name: Discord Webhook Failure
-        uses: rjstone/discord-webhook-notify@v1.0.4
+        uses: rjstone/discord-webhook-notify@v1
         if: failure()
         with:
           severity: error
