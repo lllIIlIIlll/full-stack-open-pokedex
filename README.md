@@ -1,4 +1,8 @@
-# Full Stack open CI/CD
+# Link to exercises 11.20-21 repository
+
+https://github.com/lllIIlIIlll/cicd-puhelinluettelo
+
+## Full Stack open CI/CD
 
 This repository is used for the CI/CD module of the Full stack open course
 
